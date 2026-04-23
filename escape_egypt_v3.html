@@ -1,0 +1,286 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-sans);background:var(--color-background-tertiary);}
+.hdr{background:#2C2C2A;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:52px;}
+.logo{font-size:16px;font-weight:500;color:#FAEEDA;display:flex;align-items:center;gap:8px;}
+.lbox{width:28px;height:28px;background:#BA7517;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.nav{display:flex;gap:2px;}
+.nb{font-size:12px;padding:5px 10px;border-radius:6px;cursor:pointer;border:none;background:transparent;color:#B4B2A9;font-family:var(--font-sans);}
+.nb:hover{background:#444441;color:#FAEEDA;}
+.nb.on{background:#BA7517;color:#FAEEDA;font-weight:500;}
+.hero{background:#2C2C2A;padding:24px 20px 24px;border-bottom:2px solid #BA7517;position:relative;overflow:hidden;}
+.hero svg{position:absolute;right:0;top:0;bottom:0;height:100%;opacity:0.08;}
+.hero-in{position:relative;z-index:1;}
+.eyebrow{font-size:10px;letter-spacing:2.5px;color:#BA7517;font-weight:500;margin-bottom:8px;}
+.hero h1{font-size:22px;font-weight:500;color:#FAEEDA;margin-bottom:6px;line-height:1.35;}
+.hero p{font-size:13px;color:#888780;margin-bottom:18px;}
+.sbar{display:flex;gap:8px;max-width:420px;}
+.sbar input{flex:1;padding:9px 13px;border-radius:6px;border:0.5px solid #444441;font-size:13px;background:#444441;color:#FAEEDA;font-family:var(--font-sans);}
+.sbar input::placeholder{color:#888780;}
+.bg{background:#BA7517;color:#FAEEDA;border:none;padding:9px 18px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-sans);}
+.bg:hover{background:#EF9F27;}
+.deco-bar{background:#412402;border-bottom:0.5px solid #633806;padding:7px 20px;display:flex;gap:8px;}
+.dg{font-size:15px;opacity:0.45;color:#EF9F27;}
+.stats-row{display:flex;background:#412402;border-bottom:0.5px solid #633806;}
+.stat{text-align:center;flex:1;padding:11px 8px;border-right:0.5px solid #633806;}
+.stat:last-child{border-right:none;}
+.stn{font-size:17px;font-weight:500;color:#EF9F27;}
+.stl{font-size:11px;color:#B4B2A9;}
+.tabs{padding:0 20px;background:var(--color-background-primary);display:flex;border-bottom:0.5px solid var(--color-border-tertiary);}
+.tab{font-size:13px;padding:10px 14px;cursor:pointer;border:none;background:transparent;color:var(--color-text-secondary);font-family:var(--font-sans);border-bottom:2px solid transparent;}
+.tab.on{color:#BA7517;border-bottom:2px solid #BA7517;font-weight:500;}
+.fpanel{background:var(--color-background-primary);border-bottom:0.5px solid var(--color-border-tertiary);padding:10px 20px;display:flex;flex-direction:column;gap:0;}
+.frow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 0;}
+.fdiv{height:0.5px;background:var(--color-border-tertiary);}
+.flbl{font-size:11px;font-weight:500;color:#BA7517;width:44px;flex-shrink:0;letter-spacing:0.3px;}
+.tag{font-size:12px;padding:4px 11px;border-radius:999px;border:0.5px solid var(--color-border-secondary);cursor:pointer;background:var(--color-background-primary);color:var(--color-text-secondary);font-family:var(--font-sans);}
+.tag:hover{background:var(--color-background-secondary);}
+.tag.on{background:#FAEEDA;color:#633806;border-color:#EF9F27;font-weight:500;}
+.main{padding:16px 20px;}
+.sect{font-size:13px;font-weight:500;color:var(--color-text-secondary);margin-bottom:12px;display:flex;justify-content:space-between;}
+.afl{font-size:11px;color:#BA7517;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:12px;margin-bottom:20px;}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;cursor:pointer;transition:border-color .15s;}
+.card:hover{border-color:#EF9F27;}
+.cimg{width:100%;height:110px;display:flex;align-items:center;justify-content:center;position:relative;border-bottom:0.5px solid var(--color-border-tertiary);}
+.cb{position:absolute;top:7px;left:7px;font-size:10px;padding:3px 8px;border-radius:999px;font-weight:500;}
+.be{background:#EAF3DE;color:#3B6D11;}
+.bh{background:#FAECE7;color:#993C1D;}
+.bm{background:#FAEEDA;color:#854F0B;}
+.cbody{padding:10px 12px;}
+.ct{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px;}
+.cs{font-size:11px;color:var(--color-text-secondary);margin-bottom:8px;}
+.sm4{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:8px;}
+.sm{background:var(--color-background-secondary);border-radius:6px;padding:5px 7px;}
+.smn{font-size:13px;font-weight:500;}
+.sml{font-size:10px;color:var(--color-text-secondary);}
+.cf{display:flex;justify-content:space-between;align-items:center;}
+.stars{color:#EF9F27;font-size:12px;}
+.ctag{font-size:10px;padding:3px 8px;background:#F1EFE8;color:#5F5E5A;border-radius:999px;}
+.detail{display:none;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:18px;margin-bottom:16px;}
+.detail.show{display:block;}
+.back{font-size:13px;color:var(--color-text-secondary);cursor:pointer;background:none;border:none;font-family:var(--font-sans);margin-bottom:12px;}
+.dt{font-size:18px;font-weight:500;margin-bottom:6px;color:var(--color-text-primary);}
+.dmeta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;align-items:center;}
+.drev{font-size:13px;color:var(--color-text-secondary);line-height:1.7;padding:12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);margin-bottom:12px;border-left:3px solid #EF9F27;}
+.s4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:12px;}
+.sc{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px;text-align:center;}
+.scn{font-size:20px;font-weight:500;}
+.scl{font-size:11px;color:var(--color-text-secondary);margin-top:2px;}
+.bw{margin-bottom:12px;}
+.br{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.brl{font-size:12px;color:var(--color-text-secondary);width:50px;}
+.brb{flex:1;height:5px;background:var(--color-background-secondary);border-radius:3px;overflow:hidden;}
+.brf{height:100%;border-radius:3px;}
+.brv{font-size:12px;font-weight:500;color:var(--color-text-primary);width:24px;text-align:right;}
+.i4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;font-size:12px;}
+.ic span:first-child{color:var(--color-text-secondary);display:block;margin-bottom:2px;}
+.ic span:last-child{font-weight:500;}
+.abtns{display:flex;gap:8px;flex-wrap:wrap;}
+.bo{border:0.5px solid var(--color-border-secondary);background:transparent;color:var(--color-text-primary);padding:7px 13px;border-radius:var(--border-radius-md);font-size:12px;cursor:pointer;font-family:var(--font-sans);}
+.bo:hover{background:var(--color-background-secondary);}
+</style>
+
+<h2 class="sr-only">謎境筆記埃及風格密室逃脫網站原型，含縣市星等難易度人數四維篩選</h2>
+
+<div class="hdr">
+  <div class="logo"><div class="lbox">🔐</div>謎境筆記</div>
+  <div class="nav">
+    <button class="nb on">首頁</button>
+    <button class="nb">密室逃脫</button>
+    <button class="nb">解謎App</button>
+    <button class="nb">桌遊</button>
+    <button class="nb">地圖</button>
+  </div>
+</div>
+
+<div class="hero">
+  <svg viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="130,8 250,172 10,172" fill="#EF9F27"/>
+    <polygon points="130,52 200,172 60,172" fill="#BA7517"/>
+    <line x1="130" y1="8" x2="130" y2="172" stroke="#FAEEDA" stroke-width="1.5"/>
+    <line x1="130" y1="8" x2="250" y2="172" stroke="#FAEEDA" stroke-width="0.8"/>
+    <line x1="130" y1="8" x2="10" y2="172" stroke="#FAEEDA" stroke-width="0.8"/>
+    <circle cx="130" cy="8" r="5" fill="#FAEEDA"/>
+    <rect x="20" y="155" width="16" height="17" fill="#EF9F27" opacity="0.7"/>
+    <rect x="44" y="145" width="16" height="27" fill="#EF9F27" opacity="0.7"/>
+    <rect x="68" y="138" width="16" height="34" fill="#EF9F27" opacity="0.7"/>
+  </svg>
+  <div class="hero-in">
+    <div class="eyebrow">PUZZLE · ESCAPE · EXPLORE</div>
+    <h1>謎境筆記<br>台灣解謎愛好者的第一站</h1>
+    <p>密室逃脫心得 · 解謎App推薦 · 桌遊 · 全台地圖</p>
+    <div class="sbar">
+      <input type="text" placeholder="搜尋密室名稱、地區、主題..."/>
+      <button class="bg">搜尋</button>
+    </div>
+  </div>
+</div>
+
+<div class="deco-bar">
+  <span class="dg">𓂀</span><span class="dg">𓆣</span><span class="dg">𓁢</span><span class="dg">𓂀</span><span class="dg">𓆣</span><span class="dg">𓁢</span><span class="dg">𓂀</span><span class="dg">𓆣</span><span class="dg">𓁢</span><span class="dg">𓂀</span><span class="dg">𓆣</span><span class="dg">𓁢</span><span class="dg">𓂀</span><span class="dg">𓆣</span><span class="dg">𓁢</span>
+</div>
+
+<div class="stats-row">
+  <div class="stat"><div class="stn">47</div><div class="stl">密室心得</div></div>
+  <div class="stat"><div class="stn">23</div><div class="stl">App推薦</div></div>
+  <div class="stat"><div class="stn">18</div><div class="stl">桌遊推薦</div></div>
+  <div class="stat"><div class="stn">12</div><div class="stl">縣市涵蓋</div></div>
+</div>
+
+<div class="tabs">
+  <button class="tab on">全部</button>
+  <button class="tab">密室逃脫</button>
+  <button class="tab">解謎App</button>
+  <button class="tab">桌遊</button>
+</div>
+
+<div class="fpanel">
+  <div class="frow">
+    <span class="flbl">縣市</span>
+    <button class="tag on" onclick="sf('city',this,'全部')">全部</button>
+    <button class="tag" onclick="sf('city',this,'台北')">台北</button>
+    <button class="tag" onclick="sf('city',this,'新北')">新北</button>
+    <button class="tag" onclick="sf('city',this,'台中')">台中</button>
+    <button class="tag" onclick="sf('city',this,'台南')">台南</button>
+    <button class="tag" onclick="sf('city',this,'高雄')">高雄</button>
+    <button class="tag" onclick="sf('city',this,'桃園')">桃園</button>
+  </div>
+  <div class="fdiv"></div>
+  <div class="frow">
+    <span class="flbl">星等</span>
+    <button class="tag on" onclick="sf('star',this,'0')">全部</button>
+    <button class="tag" onclick="sf('star',this,'5')">★★★★★</button>
+    <button class="tag" onclick="sf('star',this,'4')">★★★★ 以上</button>
+    <button class="tag" onclick="sf('star',this,'3')">★★★ 以上</button>
+  </div>
+  <div class="fdiv"></div>
+  <div class="frow">
+    <span class="flbl">難易度</span>
+    <button class="tag on" onclick="sf('diff',this,'全部')">全部</button>
+    <button class="tag" onclick="sf('diff',this,'簡單')">簡單</button>
+    <button class="tag" onclick="sf('diff',this,'普通')">普通</button>
+    <button class="tag" onclick="sf('diff',this,'困難')">困難</button>
+  </div>
+  <div class="fdiv"></div>
+  <div class="frow">
+    <span class="flbl">人數</span>
+    <button class="tag on" onclick="sf('ppl',this,'0')">全部</button>
+    <button class="tag" onclick="sf('ppl',this,'2')">2人可</button>
+    <button class="tag" onclick="sf('ppl',this,'3')">3人可</button>
+    <button class="tag" onclick="sf('ppl',this,'4')">4人以上</button>
+    <button class="tag" onclick="sf('ppl',this,'6')">6人大團</button>
+  </div>
+</div>
+
+<div class="main">
+  <div id="det" class="detail">
+    <button class="back" onclick="closeD()">← 返回列表</button>
+    <div id="dc"></div>
+  </div>
+  <div id="lst">
+    <div class="sect"><span id="lc">密室逃脫心得 · 共 6 篇</span><span class="afl" id="afl"></span></div>
+    <div class="grid" id="cg"></div>
+  </div>
+</div>
+
+<script>
+const rooms=[
+  {id:'e1',title:'廢棄醫院 — 最後的病患',sub:'謎境密室 · 台北',bg:'#EEEDFE',ic:'🏚️',diff:'困難',city:'台北',stars:5,ov:'4.8',pz:'4.9',sc:'4.7',st:'4.6',mn:2,mx:6,price:'NT$550/人',time:'60分鐘',addr:'台北市大安區復興南路一段XXX號',rev:'非常沉浸式的體驗！場景佈置令人毛骨悚然，謎題設計相當精妙，特別是最後的機關讓人印象深刻。建議四人以上組隊挑戰，難度頗高，我們用了 58 分鐘才成功逃脫。'},
+  {id:'e2',title:'魔法學院 — 失落的咒語',sub:'奇幻密室 · 高雄',bg:'#FBEAF0',ic:'🔮',diff:'簡單',city:'高雄',stars:4,ov:'4.2',pz:'4.0',sc:'4.5',st:'4.3',mn:2,mx:5,price:'NT$480/人',time:'60分鐘',addr:'高雄市苓雅區中正二路XXX號',rev:'場景超美，很適合親子或初學者！魔法學院主題設計用心，道具質感好。謎題相對簡單，老手可能覺得不夠挑戰，但非常適合帶新朋友體驗密室逃脫。'},
+  {id:'e3',title:'東方快車謀殺案',sub:'偵探密室 · 台中',bg:'#E6F1FB',ic:'🚂',diff:'普通',city:'台中',stars:5,ov:'4.6',pz:'4.5',sc:'4.6',st:'5.0',mn:3,mx:6,price:'NT$520/人',time:'75分鐘',addr:'台中市西區自由路XXX號',rev:'劇情沉浸感超強！GM 表現非常專業，整個過程像在演一部電影。謎題與劇情結合得天衣無縫，強烈推薦給喜歡劇情向密室的玩家！'},
+  {id:'e4',title:'深海研究站 — 禁區',sub:'科幻密室 · 台北',bg:'#E1F5EE',ic:'🌊',diff:'困難',city:'台北',stars:4,ov:'4.5',pz:'4.8',sc:'4.3',st:'4.2',mn:3,mx:5,price:'NT$600/人',time:'90分鐘',addr:'台北市信義區松高路XXX號',rev:'謎題難度很高，非常考驗邏輯和團隊溝通！很多道具都很有創意。缺點是劇情背景交代不夠清楚，不過整體還是很值得挑戰。'},
+  {id:'e5',title:'江戶幕府 — 刺客的信',sub:'古裝密室 · 台南',bg:'#FAEEDA',ic:'🏯',diff:'普通',city:'台南',stars:4,ov:'4.3',pz:'4.2',sc:'4.5',st:'4.4',mn:2,mx:4,price:'NT$490/人',time:'60分鐘',addr:'台南市中西區民族路XXX號',rev:'台南難得一見的古裝主題密室！服裝道具非常精緻，場景有歷史感。整體流程順暢，推薦給想嘗試不同主題的解謎愛好者。'},
+  {id:'e6',title:'異次元裂縫 — 覺醒',sub:'科幻密室 · 台北',bg:'#FCEBEB',ic:'👁️',diff:'困難',city:'台北',stars:5,ov:'4.7',pz:'4.9',sc:'4.6',st:'4.5',mn:2,mx:6,price:'NT$580/人',time:'75分鐘',addr:'台北市中山區中山北路XXX號',rev:'目前玩過謎題最精妙的一間！機關設計非常有創意，多個謎題環環相扣，解開時的成就感爆棚。場景特效也做得很好，強烈推薦給喜歡挑戰的老手。'},
+];
+const F={city:'全部',star:'0',diff:'全部',ppl:'0'};
+const dc={困難:'bh',簡單:'be',普通:'bm'};
+const sc={'ov':'#BA7517','pz':'#1D9E75','sc':'#EF9F27','st':'#D85A30'};
+function ss(n){return '★'.repeat(n)+'☆'.repeat(5-n);}
+function render(){
+  const list=rooms.filter(r=>{
+    if(F.city!=='全部'&&r.city!==F.city)return false;
+    const s=parseInt(F.star);
+    if(s>0&&r.stars<s)return false;
+    if(F.diff!=='全部'&&r.diff!==F.diff)return false;
+    const p=parseInt(F.ppl);
+    if(p===2&&r.mn>2)return false;
+    if(p===3&&r.mn>3)return false;
+    if(p===4&&r.mn>4)return false;
+    if(p===6&&r.mx<6)return false;
+    return true;
+  });
+  document.getElementById('lc').textContent='密室逃脫心得 · 共 '+list.length+' 篇';
+  const af=[];
+  if(F.city!=='全部')af.push(F.city);
+  if(F.star!=='0')af.push(F.star+'星以上');
+  if(F.diff!=='全部')af.push(F.diff);
+  if(F.ppl!=='0')af.push(F.ppl==='2'?'2人可':F.ppl==='3'?'3人可':F.ppl==='4'?'4人以上':'6人大團');
+  document.getElementById('afl').textContent=af.length?'篩選中：'+af.join(' · '):'';
+  document.getElementById('cg').innerHTML=list.map(r=>`
+    <div class="card" onclick="openD('${r.id}')">
+      <div class="cimg" style="background:${r.bg};height:110px"><span style="font-size:30px">${r.ic}</span><span class="cb ${dc[r.diff]}">${r.diff}</span></div>
+      <div class="cbody">
+        <div class="ct">${r.title}</div>
+        <div class="cs">${r.sub}</div>
+        <div class="sm4">
+          <div class="sm"><div class="smn" style="color:#BA7517">${r.ov}</div><div class="sml">整體</div></div>
+          <div class="sm"><div class="smn" style="color:#1D9E75">${r.pz}</div><div class="sml">謎題</div></div>
+          <div class="sm"><div class="smn" style="color:#EF9F27">${r.sc}</div><div class="sml">場景</div></div>
+          <div class="sm"><div class="smn" style="color:#D85A30">${r.st}</div><div class="sml">劇情</div></div>
+        </div>
+        <div class="cf"><span class="stars">${ss(r.stars)}</span><span class="ctag">${r.city}</span></div>
+      </div>
+    </div>`).join('');
+}
+function sf(type,el,val){
+  F[type]=val;
+  el.closest('.frow').querySelectorAll('.tag').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+  render();
+}
+function openD(id){
+  const r=rooms.find(x=>x.id===id);
+  document.getElementById('dc').innerHTML=`
+    <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:4px">密室逃脫心得</div>
+    <div class="dt">${r.title}</div>
+    <div class="dmeta">
+      <span class="cb ${dc[r.diff]}" style="position:static;font-size:11px;padding:3px 9px">${r.diff}</span>
+      <span class="ctag" style="font-size:11px">${r.city}</span>
+      <span style="font-size:12px;color:#EF9F27">${ss(r.stars)}</span>
+    </div>
+    <div class="drev">${r.rev}</div>
+    <div class="s4">
+      <div class="sc"><div class="scn" style="color:#BA7517">${r.ov}</div><div class="scl">整體評分</div></div>
+      <div class="sc"><div class="scn" style="color:#1D9E75">${r.pz}</div><div class="scl">謎題設計</div></div>
+      <div class="sc"><div class="scn" style="color:#EF9F27">${r.sc}</div><div class="scl">場景設計</div></div>
+      <div class="sc"><div class="scn" style="color:#D85A30">${r.st}</div><div class="scl">劇情沉浸</div></div>
+    </div>
+    <div class="bw">
+      ${[['ov','整體','#BA7517'],['pz','謎題','#1D9E75'],['sc','場景','#EF9F27'],['st','劇情','#D85A30']].map(([k,lb,cl])=>{
+        const pct=(parseFloat(r[k])/5*100).toFixed(0);
+        return `<div class="br"><span class="brl">${lb}</span><div class="brb"><div class="brf" style="width:${pct}%;background:${cl}"></div></div><span class="brv">${r[k]}</span></div>`;
+      }).join('')}
+    </div>
+    <div class="i4">
+      <div class="ic"><span>地點</span><span>${r.city}</span></div>
+      <div class="ic"><span>票價</span><span>${r.price}</span></div>
+      <div class="ic"><span>時間</span><span>${r.time}</span></div>
+      <div class="ic"><span>人數</span><span>${r.mn}–${r.mx}人</span></div>
+    </div>
+    <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:10px">📍 ${r.addr}</div>
+    <div class="abtns">
+      <button class="bg" style="font-size:12px;padding:7px 14px">官方訂位連結</button>
+      <button class="bo">Google 地圖</button>
+      <button class="bo">分享心得</button>
+    </div>`;
+  document.getElementById('det').classList.add('show');
+  document.getElementById('lst').style.display='none';
+}
+function closeD(){
+  document.getElementById('det').classList.remove('show');
+  document.getElementById('lst').style.display='block';
+}
+render();
+</script>
